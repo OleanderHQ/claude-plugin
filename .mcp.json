@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "oleander": {
+      "type": "http",
+      "url": "https://oleander.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${OLEANDER_API_KEY}"
+      }
+    }
+  }
+}

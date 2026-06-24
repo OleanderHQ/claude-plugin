@@ -1,0 +1,13 @@
+{
+  "name": "oleander",
+  "description": "todo",
+  "version": "0.1.0",
+  "author": {
+    "name": "Willy Lulciuc",
+    "email": "willy@oleander.dev"
+  },
+  "homepage": "https://oleander.dev",
+  "repository": "https://github.com/OleanderHQ/oleander-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["database", "lakehouse", "iceberg", "duckdb", "spark", "data-agent", "mcp", "lineage", "analytics"]
+}
