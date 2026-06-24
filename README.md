@@ -4,15 +4,15 @@ Query and analyze data in the oleander warehouse from Claude Code or Claude Cowo
 
 ## Local testing
 
-### Run with `--plugin-dir`
-
 First, add your API key:
 
 ```bash
 export OLEANDER_API_KEY="your-api-key"
 ```
 
-Then:
+### Claude Code
+
+From the parent of this repository:
 
 ```bash
 claude --plugin-dir ./claude-plugin
@@ -20,6 +20,19 @@ claude --plugin-dir ./claude-plugin
 
 > [!TIP]
 > Use `/reload-plugins` to pick up changes without restarting.
+
+### Claude Cowork
+
+Zip this repo:
+
+```bash
+cd claude-plugin
+zip -r oleander .
+```
+
+In Claude desktop app, open **Customize** → **Add plugin** → **Upload plugind** and select `oleander.zip`.
+
+After each change, re-run the zip command and upload the new file to pick up updates.
 
 ## Configuration
 
