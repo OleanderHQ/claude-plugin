@@ -39,6 +39,9 @@ Optional `oleander_read_table_size` inputs: `snapshot_id` for a specific
 Iceberg snapshot; `partition_filters` as `[{ key, value }]` when the
 user asks about a partition's size.
 
+When listing, discovering, or presenting catalog tables, use the format
+in `skills/tables/SKILL.md`.
+
 ## DuckDB path (< 50 GB)
 
 1. If unsure of the schema, run `DESCRIBE <table>` or inspect
@@ -46,8 +49,7 @@ user asks about a partition's size.
 2. Write SQL appropriate to the question — aggregation, filtering,
    joins.
 3. Run it via `oleander_query_lake`.
-4. Summarize the result in plain language; don't just dump raw rows
-   unless asked.
+4. Present the response using the format in **Present results** below.
 
 ## Spark path (>= 50 GB)
 
@@ -61,8 +63,43 @@ user asks about a partition's size.
    a matching artifact is already `READY`.
 5. Upload with `oleander_upload_spark_artifact` when needed, then submit
    with `oleander_submit_spark_job` (`confirm: true`).
-6. Return the job submission details and how to read the output table
-   or results.
+6. Present the response using the format in **Present results** below.
+
+## Present results
+
+After a successful query, lead with a short plain-language answer. Put
+the SQL and raw rows in expandable blocks the user can open and copy.
+
+1. One or two sentences with the insight — keep this outside the blocks.
+2. SQL in a collapsible copy block:
+
+<details>
+
+```sql
+<the executed query>
+```
+
+</details>
+
+3. Full result set in a second collapsible copy block. Use CSV inside a
+   fenced code block (not a markdown table) so copy works cleanly:
+
+<details>
+<summary>(<N> rows)</summary>
+
+```csv
+col1,col2,col3
+val1,val2,val3
+```
+
+</details>
+
+4. One short footer line — row count, engine used (DuckDB or Spark), and
+   any limit note (for example, DuckDB `SELECT` results capped at 20
+   rows).
+
+For Spark jobs, include the submitted SQL in the first block and either
+the output-table reference or post-job query results in the second.
 
 ## Notes
 
