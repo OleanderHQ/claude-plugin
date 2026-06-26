@@ -36,6 +36,8 @@ fail partway through.
    already exist — if it does, stop and ask the user whether to choose a
    new name, rather than retrying with a guessed alternative.
 7. Return the staged destination and created table response to the user.
+8. Show the new table using the catalog tables format in
+   `skills/tables/SKILL.md`.
 
 Optional: set `content_type` when the upload content type matters; the
 staging API applies defaults when it is omitted.
