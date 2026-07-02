@@ -12,8 +12,9 @@ correct engine.
 
 For each table the query reads:
 
-1. Call `oleander:oleander_read_table_metadata` with `catalog: oleander`,
-   `namespace: default` to get schema and the partition spec.
+1. Call `oleander:oleander_read_table_metadata` with `catalog: oleander`
+   and `namespace: default` unless the user specifies otherwise, to get
+   schema and the partition spec.
 2. From the SQL, identify WHERE clause predicates on partition columns.
    If partition filtering cannot be determined, use the full-table size
    as a conservative estimate.
