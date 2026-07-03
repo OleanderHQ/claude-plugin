@@ -1,0 +1,47 @@
+name: Sync Skills
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Monday at 6am UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: true
+
+      - name: Update submodule to latest
+        run: |
+          git submodule update --init --remote submodules/skills
+
+      - name: Copy skills from submodule
+        run: |
+          rsync -a --delete --exclude README.md \
+            submodules/skills/skills/ \
+            skills/
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet skills/ submodules/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push changes directly
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add skills/ submodules/skills
+          git commit -m "sync: update skills from OleanderHQ/skills"
+          git pull --rebase origin main
+          git push origin main
