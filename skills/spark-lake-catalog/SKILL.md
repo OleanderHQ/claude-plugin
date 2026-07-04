@@ -1,13 +1,13 @@
 ---
-name: spark-iceberg-catalog
-description: Spark-specific patterns for reading and writing oleander Iceberg catalog tables, including append vs overwrite, avoiding driver writes, and reusable table naming.
+name: spark-lake-catalog
+description: Spark-specific patterns for reading and writing oleander lake catalog tables, including append vs overwrite, avoiding driver writes, and reusable table naming.
 ---
 
-# oleander Spark Iceberg Catalog
+# oleander Spark Lake Catalog
 
-Use this skill when reading from or writing to the oleander Iceberg catalog in a Spark job.
+Use this skill when reading from or writing to the oleander lake catalog in a Spark job.
 
-For shared catalog conventions such as table naming, namespaces, and avoiding raw storage paths, also use `iceberg-catalog`.
+For shared catalog conventions such as table naming, namespaces, and avoiding raw storage paths, also use `lake-catalog`.
 
 ## Reading tables
 

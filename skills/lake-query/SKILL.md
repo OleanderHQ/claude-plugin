@@ -1,9 +1,9 @@
 ---
-name: query
-description: Use query to explore your data; compare seasonal revenue, analyze product changes, count new user signups, or find whatever answers are hidden in your data.
+name: lake-query
+description: Use lake-query to explore your data; compare seasonal revenue, analyze product changes, count new user signups, or find whatever answers are hidden in your data.
 ---
 
-# Query
+# Lake Query
 
 Check how much data the query will actually read, then route to the
 correct engine.
