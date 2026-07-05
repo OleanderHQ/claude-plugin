@@ -2,20 +2,41 @@
 
 Query and analyze data in the oleander warehouse from Claude Code or Claude Cowork.
 
+## Getting started
+
+1. **Sign up** at [oleander.dev](https://oleander.dev) and create an API key in your account settings.
+
+2. **Set your API key** in your environment:
+
+   ```bash
+   export OLEANDER_API_KEY="your-api-key"
+   ```
+
+3. **Install the plugin** in Claude Code:
+
+   ```shell
+   /plugin marketplace add anthropics/claude-plugins-community
+   /plugin install oleander@claude-community
+   ```
+
+4. **Ask Claude about your data** — for example:
+
+   - "Describe `oleander.default.flowers` — what columns are in the table?"
+   - "Show me 10 rows from `oleander.default.flowers`"
+   - "How many rows are in `oleander.default.flowers`, and what are the distinct values in each column?"
+
+Claude uses the oleander MCP server and plugin skills to explore your lake catalog and run SQL.
+
 ## Local testing
 
-First, add your API key:
-
-```bash
-export OLEANDER_API_KEY="your-api-key"
-```
+Use `--plugin-dir` to load this repository directly while developing.
 
 ### Claude Code
 
-From the parent of this repository:
+From the root of this repository:
 
 ```bash
-claude --plugin-dir ./claude-plugin
+claude --plugin-dir .
 ```
 
 > [!TIP]
@@ -23,14 +44,13 @@ claude --plugin-dir ./claude-plugin
 
 ### Claude Cowork
 
-Zip this repo:
+Zip this repository:
 
 ```bash
-cd claude-plugin
-zip -r oleander .
+zip -r oleander.zip .
 ```
 
-In Claude desktop app, open **Customize** → **Add plugin** → **Upload plugind** and select `oleander.zip`.
+In the Claude desktop app, open **Customize** → **Add plugin** → **Upload plugin** and select `oleander.zip`.
 
 After each change, re-run the zip command and upload the new file to pick up updates.
 
@@ -45,11 +65,3 @@ MCP connection is defined in [`.mcp.json`](.mcp.json):
   }
 }
 ```
-
-## Usage
-
-You can now query and analyze your data:
-
-- "Describe `oleander.default.flowers` — what columns are in the table?"
-- "Show me 10 rows from `oleander.default.flowers`"
-- "How many rows are in `oleander.default.flowers`, and what are the distinct values in each column?"
