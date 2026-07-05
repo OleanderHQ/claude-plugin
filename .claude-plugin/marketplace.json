@@ -1,5 +1,6 @@
 {
   "name": "oleander",
+  "description": "Upload any dataset and query it instantly. oleander is a fully managed warehouse that routes every query to the right engine automatically, with no infrastructure to manage.",
   "owner": {
     "name": "oleander",
     "email": "willy@oleander.dev"
