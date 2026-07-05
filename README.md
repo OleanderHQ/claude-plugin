@@ -19,7 +19,7 @@ Query and analyze data in the oleander warehouse from Claude Code or Claude Cowo
    /plugin install oleander@claude-community
    ```
 
-4. **Ask Claude about your data** — for example:
+4. **Ask Claude about your data**, for example:
 
    - "Describe `oleander.default.flowers` — what columns are in the table?"
    - "Show me 10 rows from `oleander.default.flowers`"
@@ -29,11 +29,16 @@ Claude uses the oleander MCP server and plugin skills to explore your lake catal
 
 ## Local testing
 
-Use `--plugin-dir` to load this repository directly while developing.
+### Install from this marketplace
 
-### Claude Code
+```shell
+/plugin marketplace add OleanderHQ/claude-plugin
+/plugin install oleander@oleander-plugins
+```
 
-From the root of this repository:
+### Claude Code (`--plugin-dir`)
+
+Load this repository directly while developing:
 
 ```bash
 claude --plugin-dir .

@@ -1,0 +1,33 @@
+{
+  "name": "oleander",
+  "owner": {
+    "name": "oleander",
+    "email": "willy@oleander.dev"
+  },
+  "plugins": [
+    {
+      "name": "oleander",
+      "source": "./",
+      "description": "oleander claude plugin: skills, rules, and MCP.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Willy Lulciuc",
+        "email": "willy@oleander.dev"
+      },
+      "homepage": "https://oleander.dev",
+      "repository": "https://github.com/OleanderHQ/claude-plugin",
+      "license": "Apache-2.0",
+      "keywords": [
+        "database",
+        "lakehouse",
+        "iceberg",
+        "duckdb",
+        "spark",
+        "data-agent",
+        "mcp",
+        "lineage",
+        "analytics"
+      ]
+    }
+  ]
+}
