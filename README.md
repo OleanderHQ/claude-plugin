@@ -33,7 +33,7 @@ Claude uses the oleander MCP server and plugin skills to explore your lake catal
 
 ```shell
 /plugin marketplace add OleanderHQ/claude-plugin
-/plugin install oleander@oleander-plugins
+/plugin install oleander@oleander
 ```
 
 ### Claude Code (`--plugin-dir`)
