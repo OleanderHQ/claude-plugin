@@ -3,8 +3,8 @@
   "description": "The all-in-one data stack for agents. Your data jobs deserve to run on the right tool. Whether you're bringing existing infra, or exploring our open source deployments, oleander empowers your entire data stack to work together as a team.",
   "version": "0.1.0",
   "author": {
-    "name": "Willy Lulciuc",
-    "email": "willy@oleander.dev"
+    "name": "oleander",
+    "email": "dev@oleander.dev"
   },
   "homepage": "https://oleander.dev",
   "repository": "https://github.com/OleanderHQ/claude-plugin",
