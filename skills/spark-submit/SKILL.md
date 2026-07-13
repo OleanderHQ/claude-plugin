@@ -1,11 +1,71 @@
 ---
 name: spark-submit
-description: How to submit, monitor, and configure Spark jobs on oleander using the CLI & TypeScript SDK.
+description: How to submit, monitor, and configure Spark jobs on oleander using MCP, the CLI, and the TypeScript SDK.
 ---
 
 # oleander Spark Submit
 
 Use this skill when submitting Spark jobs to oleander, monitoring run state, or building automated workflows that execute Spark jobs.
+
+## MCP submission
+
+Use these tools when working through the oleander MCP server (Claude Code,
+Cursor, etc.). Tool names use dot notation — for example `spark.jobs.submit`,
+not `oleander_submit_spark_job`.
+
+For Spark **SQL** jobs that write to a table, use `spark.sql.submit` instead
+(see the `lake-query` skill).
+
+### Artifacts
+
+Before submitting a PySpark script, check whether it is already uploaded:
+
+1. `spark.artifacts.list` — list ready artifacts and versions
+2. If missing or the user asks for a new version: `spark.artifacts.upload`
+   with `entrypoint`, `entrypoint_content_base64`, and `confirm: true`
+3. To inspect source before running: `spark.artifacts.get`
+
+Pass the artifact **basename** from the list (for example `my_job.py`) as
+`properties.entrypoint` in `spark.jobs.submit`, not the storage URI.
+
+### Submit a job
+
+Call `spark.jobs.submit` with:
+
+- `namespace` and `name` — job identity
+- `properties.entrypoint` — artifact basename
+- `properties.entrypointArguments` — optional args passed to the script
+- `properties.driverMachineType`, `properties.executorMachineType`,
+  `properties.executorNumbers` — sizing (defaults: `spark.1.b`, 2 executors)
+- `confirm: true`
+
+The response includes `runId` and initial `state` (typically `SUBMITTED`).
+Cluster is always oleander-managed serverless Spark.
+
+### Monitor a run
+
+Poll until the run reaches a terminal state (`COMPLETE`, `FAIL`, or `ABORT`):
+
+1. `jobs.runs.get` with the `run_id` from submit
+2. Retry if the run is not visible yet — freshly submitted runs can take a
+   moment to appear
+
+Related tools after submit:
+
+- `jobs.runs.list` — recent runs for a `namespace` + job name
+- `jobs.logs.get` — driver and executor logs
+- `jobs.traces.get` — OpenTelemetry traces
+- `jobs.cost.get` — run cost breakdown
+- `jobs.lineage.get` — datasets read and written
+
+Always gather cost and lineage for completed runs before presenting final
+output to the user.
+
+### Abort a run
+
+Call `spark.jobs.abort` with `run_id` and `confirm: true` to stop an active
+run. Check state with `jobs.runs.get` first if unsure whether it is still
+running.
 
 ## CLI submission
 
