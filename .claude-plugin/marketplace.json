@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "oleander",
-  "description": "Upload any dataset and query it instantly. oleander is a fully managed warehouse that routes every query to the right engine automatically, with no infrastructure to manage.",
+  "description": "The all-in-one data stack for agents. Your data jobs deserve to run on the right tool. Whether you're bringing existing infra, or exploring our open source deployments, oleander empowers your entire data stack to work together as a team.",
   "owner": {
     "name": "oleander",
     "email": "willy@oleander.dev"
